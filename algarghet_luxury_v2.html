@@ -1,0 +1,938 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@200;300;400;500&display=swap');
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --ink:#0E0C09;
+  --ink2:#1C1914;
+  --ink3:#2A2520;
+  --gold:#C4973F;
+  --gold2:#E8C97A;
+  --gold3:#F5E6C0;
+  --stone:#F9F5EE;
+  --stone2:#EFE8D8;
+  --smoke:rgba(14,12,9,0.06);
+  --text:#3D3629;
+  --muted:#8C7D68;
+}
+
+body{
+  background:var(--ink);
+  color:var(--stone);
+  font-family:'Jost',sans-serif;
+  font-weight:300;
+  line-height:1.7;
+  overflow-x:hidden;
+}
+
+a{color:inherit;text-decoration:none}
+
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+
+/* ── NAV ── */
+.nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:2rem 3.5rem;
+  background:var(--ink);
+  border-bottom:1px solid rgba(196,151,63,0.15);
+}
+.nav-brand{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.35rem;
+  font-weight:400;
+  letter-spacing:.25em;
+  text-transform:uppercase;
+  color:var(--gold2);
+}
+.nav-brand span{
+  display:block;
+  font-size:.55rem;
+  letter-spacing:.5em;
+  color:var(--gold);
+  opacity:.7;
+  margin-top:.1rem;
+}
+.nav-menu{
+  display:flex;
+  gap:2.5rem;
+  list-style:none;
+}
+.nav-menu a{
+  font-size:.7rem;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:rgba(249,245,238,0.55);
+  transition:color .3s;
+}
+.nav-menu a:hover{color:var(--gold2)}
+.nav-cta{
+  font-size:.68rem;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--gold);
+  border:1px solid rgba(196,151,63,0.5);
+  padding:.6rem 1.6rem;
+  transition:all .35s;
+}
+.nav-cta:hover{background:var(--gold);color:var(--ink)}
+
+/* ── HERO ── */
+.hero{
+  min-height:92vh;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  position:relative;
+}
+.hero-left{
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  padding:5rem 3.5rem 5rem 3.5rem;
+  position:relative;
+  z-index:2;
+}
+.hero-pill{
+  display:inline-flex;
+  align-items:center;
+  gap:.6rem;
+  font-size:.62rem;
+  letter-spacing:.35em;
+  text-transform:uppercase;
+  color:var(--gold);
+  border:1px solid rgba(196,151,63,0.3);
+  padding:.4rem 1rem;
+  align-self:flex-start;
+  margin-bottom:2.2rem;
+}
+.hero-pill::before{
+  content:'';
+  width:18px;height:1px;background:var(--gold);opacity:.6;
+}
+.hero-h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(4rem,6vw,5.8rem);
+  font-weight:300;
+  line-height:1.0;
+  color:var(--stone);
+  margin-bottom:.4rem;
+}
+.hero-h1 em{
+  font-style:italic;
+  color:var(--gold2);
+  display:block;
+}
+.hero-sep{
+  display:flex;
+  align-items:center;
+  gap:1rem;
+  margin:2rem 0;
+}
+.hero-sep-line{width:50px;height:1px;background:var(--gold);opacity:.4}
+.hero-sep-gem{
+  width:5px;height:5px;background:var(--gold);
+  transform:rotate(45deg);flex-shrink:0;
+}
+.hero-intro{
+  font-size:.93rem;
+  color:rgba(249,245,238,.55);
+  max-width:380px;
+  line-height:1.9;
+  margin-bottom:2.8rem;
+}
+.hero-actions{
+  display:flex;
+  align-items:center;
+  gap:2rem;
+}
+.btn-primary{
+  font-size:.68rem;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  background:var(--gold);
+  color:var(--ink);
+  padding:.85rem 2.2rem;
+  font-weight:500;
+  transition:background .3s;
+}
+.btn-primary:hover{background:var(--gold2)}
+.btn-ghost{
+  font-size:.68rem;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:rgba(249,245,238,.45);
+  border-bottom:1px solid rgba(249,245,238,.15);
+  padding-bottom:.2rem;
+  transition:color .3s,border-color .3s;
+}
+.btn-ghost:hover{color:var(--stone);border-color:rgba(249,245,238,.4)}
+
+.hero-right{
+  position:relative;
+  overflow:hidden;
+}
+.hero-artwork{
+  position:absolute;
+  inset:0;
+  background:var(--ink2);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.hero-artwork::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to right,var(--ink) 0%,transparent 35%),
+             linear-gradient(to top,var(--ink) 0%,transparent 25%);
+}
+.hero-ornament-art{
+  position:relative;z-index:1;opacity:.18;
+}
+.hero-stats{
+  position:absolute;
+  bottom:3rem;right:2rem;
+  z-index:3;
+  display:flex;
+  flex-direction:column;
+  gap:1.5rem;
+  align-items:flex-end;
+}
+.stat{text-align:right}
+.stat-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2.8rem;
+  font-weight:300;
+  color:var(--gold2);
+  line-height:1;
+}
+.stat-label{
+  font-size:.6rem;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  color:rgba(196,151,63,.55);
+}
+
+/* ── RIBBON ── */
+.ribbon{
+  background:var(--gold);
+  color:var(--ink);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:3rem;
+  padding:1rem 3.5rem;
+  overflow:hidden;
+}
+.ribbon-item{
+  font-size:.62rem;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  font-weight:500;
+  white-space:nowrap;
+}
+.ribbon-dot{
+  width:3px;height:3px;
+  background:var(--ink);
+  border-radius:50%;
+  opacity:.4;
+  flex-shrink:0;
+}
+
+/* ── STORIA ── */
+.storia{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  min-height:80vh;
+  background:var(--stone);
+  color:var(--ink);
+}
+.storia-visual{
+  position:relative;
+  background:var(--ink2);
+  overflow:hidden;
+  min-height:500px;
+}
+.storia-visual-inner{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+}
+.storia-inner-frame{
+  position:absolute;
+  inset:2.5rem;
+  border:1px solid rgba(196,151,63,0.25);
+}
+.storia-yr{
+  position:absolute;
+  bottom:2rem;left:2rem;
+  font-family:'Cormorant Garamond',serif;
+  font-size:7rem;
+  font-weight:300;
+  color:rgba(196,151,63,.12);
+  line-height:1;
+}
+.storia-content{
+  padding:5rem 4rem;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.eyebrow{
+  font-size:.62rem;
+  letter-spacing:.4em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:1rem;
+}
+.storia-h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.2rem,3.5vw,3.2rem);
+  font-weight:300;
+  line-height:1.15;
+  color:var(--ink);
+  margin-bottom:2rem;
+}
+.storia-quote{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.3rem;
+  font-style:italic;
+  font-weight:300;
+  color:var(--gold);
+  line-height:1.65;
+  margin-bottom:1.8rem;
+  padding-left:1.5rem;
+  border-left:2px solid rgba(196,151,63,0.35);
+}
+.storia-body{
+  font-size:.9rem;
+  color:var(--muted);
+  line-height:1.95;
+  margin-bottom:2rem;
+}
+.firma{display:flex;flex-direction:column;gap:.2rem}
+.firma-nome{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.15rem;
+  font-style:italic;
+  color:var(--text);
+}
+.firma-ruolo{
+  font-size:.62rem;
+  letter-spacing:.25em;
+  text-transform:uppercase;
+  color:var(--gold);
+}
+
+/* ── MENU ── */
+.menu{
+  background:var(--ink);
+  padding:6rem 3.5rem;
+}
+.menu-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  margin-bottom:4rem;
+}
+.menu-h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.2rem,3.5vw,3rem);
+  font-weight:300;
+  color:var(--stone);
+}
+.menu-link{
+  font-size:.65rem;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--gold);
+  border-bottom:1px solid rgba(196,151,63,.3);
+  padding-bottom:.2rem;
+  transition:border-color .3s;
+}
+.menu-link:hover{border-color:var(--gold)}
+
+.menu-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
+  background:rgba(196,151,63,0.12);
+  border:1px solid rgba(196,151,63,0.12);
+}
+.dish{
+  background:var(--ink);
+  padding:2.5rem 2rem;
+  position:relative;
+  overflow:hidden;
+  transition:background .4s;
+  cursor:default;
+}
+.dish:hover{background:var(--ink2)}
+.dish-bg-num{
+  position:absolute;
+  top:.5rem;right:1rem;
+  font-family:'Cormorant Garamond',serif;
+  font-size:5rem;
+  font-weight:300;
+  color:rgba(196,151,63,0.06);
+  line-height:1;
+  pointer-events:none;
+  user-select:none;
+}
+.dish-cat{
+  font-size:.58rem;
+  letter-spacing:.35em;
+  text-transform:uppercase;
+  color:rgba(196,151,63,.6);
+  margin-bottom:1rem;
+}
+.dish-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.55rem;
+  font-weight:400;
+  color:var(--stone);
+  line-height:1.25;
+  margin-bottom:.9rem;
+}
+.dish-rule{
+  width:24px;height:1px;
+  background:var(--gold);opacity:.35;
+  margin-bottom:.9rem;
+}
+.dish-desc{
+  font-size:.82rem;
+  color:rgba(249,245,238,.38);
+  line-height:1.8;
+}
+
+/* ── ORARI ── */
+.orari{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  background:var(--stone2);
+  color:var(--ink);
+}
+.orari-left{
+  padding:5.5rem 3.5rem;
+  border-right:1px solid rgba(196,151,63,0.2);
+}
+.orari-h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2rem,3vw,2.8rem);
+  font-weight:300;
+  color:var(--ink);
+  margin-bottom:2.5rem;
+}
+.orari-table{width:100%}
+.orari-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  padding:.85rem 0;
+  border-bottom:1px solid rgba(14,12,9,0.08);
+  gap:1rem;
+}
+.orari-row:last-child{border-bottom:none}
+.orari-day{
+  font-size:.88rem;
+  color:var(--text);
+  font-weight:400;
+  min-width:160px;
+}
+.orari-time{
+  font-size:.82rem;
+  color:var(--muted);
+  text-align:right;
+}
+.orari-closed{color:rgba(140,125,104,.5);font-style:italic}
+.orari-note{
+  margin-top:1.5rem;
+  font-size:.72rem;
+  color:var(--gold);
+  letter-spacing:.05em;
+}
+
+.orari-right{
+  padding:5.5rem 3.5rem;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:2rem;
+}
+.orari-cta-label{
+  font-size:.62rem;
+  letter-spacing:.4em;
+  text-transform:uppercase;
+  color:var(--gold);
+}
+.orari-h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.8rem,2.5vw,2.4rem);
+  font-weight:300;
+  color:var(--ink);
+  line-height:1.2;
+}
+.orari-desc{
+  font-size:.9rem;
+  color:var(--muted);
+  line-height:1.85;
+}
+.contact-list{
+  display:flex;
+  flex-direction:column;
+  gap:.7rem;
+}
+.contact-row{
+  display:flex;
+  gap:.8rem;
+  align-items:baseline;
+  font-size:.85rem;
+}
+.contact-lbl{
+  font-size:.6rem;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--ink);
+  min-width:52px;
+  padding-top:.1rem;
+}
+.contact-val{color:var(--muted)}
+.orari-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:.8rem;
+  background:var(--ink);
+  color:var(--gold2);
+  font-size:.68rem;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  padding:.9rem 2rem;
+  align-self:flex-start;
+  transition:background .3s;
+}
+.orari-btn:hover{background:var(--ink3)}
+.orari-btn svg{width:14px;height:14px;stroke:currentColor;stroke-width:1.5;fill:none;flex-shrink:0}
+
+/* ── GIARDINO ── */
+.giardino{
+  background:var(--ink2);
+  padding:6rem 3.5rem;
+  display:flex;
+  align-items:center;
+  gap:5rem;
+}
+.giardino-visual{
+  flex:0 0 45%;
+  aspect-ratio:4/5;
+  background:var(--ink);
+  position:relative;
+  overflow:hidden;
+}
+.giardino-inner-frame{
+  position:absolute;inset:1.5rem;
+  border:1px solid rgba(196,151,63,0.18);
+}
+.giardino-svg{
+  position:absolute;
+  inset:0;
+  width:100%;height:100%;
+  opacity:.08;
+}
+.giardino-badge{
+  position:absolute;
+  bottom:1.5rem;left:1.5rem;
+  background:var(--gold);
+  color:var(--ink);
+  font-size:.6rem;
+  letter-spacing:.25em;
+  text-transform:uppercase;
+  font-weight:500;
+  padding:.45rem 1rem;
+}
+.giardino-text{flex:1}
+.giardino-h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2rem,3vw,2.8rem);
+  font-weight:300;
+  color:var(--stone);
+  margin-bottom:1.5rem;
+  line-height:1.2;
+}
+.giardino-body{
+  font-size:.9rem;
+  color:rgba(249,245,238,.5);
+  line-height:1.95;
+  margin-bottom:2rem;
+}
+.services{
+  display:flex;
+  flex-direction:column;
+  gap:0;
+}
+.svc{
+  display:flex;
+  align-items:center;
+  gap:1rem;
+  padding:.8rem 0;
+  border-bottom:1px solid rgba(196,151,63,0.1);
+  font-size:.82rem;
+  color:rgba(249,245,238,.55);
+}
+.svc::before{
+  content:'';
+  width:4px;height:4px;
+  background:var(--gold);
+  transform:rotate(45deg);
+  flex-shrink:0;
+}
+
+/* ── FOOTER ── */
+.footer{background:#09080605;border-top:1px solid rgba(196,151,63,0.12)}
+.footer-main{
+  display:grid;
+  grid-template-columns:1.4fr 1fr 1fr 1fr;
+  gap:4rem;
+  padding:5rem 3.5rem 3rem;
+}
+.footer-brand-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.7rem;
+  font-weight:300;
+  color:var(--gold2);
+  letter-spacing:.15em;
+}
+.footer-tagline{
+  font-size:.7rem;
+  color:rgba(249,245,238,.25);
+  letter-spacing:.12em;
+  margin-top:.3rem;
+  margin-bottom:1.8rem;
+}
+.footer-address{
+  font-size:.82rem;
+  color:rgba(249,245,238,.35);
+  line-height:1.9;
+}
+.footer-col h4{
+  font-size:.6rem;
+  letter-spacing:.35em;
+  text-transform:uppercase;
+  color:var(--gold);
+  opacity:.65;
+  margin-bottom:1.2rem;
+}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:.55rem}
+.footer-col a{
+  font-size:.82rem;
+  color:rgba(249,245,238,.35);
+  transition:color .3s;
+}
+.footer-col a:hover{color:rgba(249,245,238,.7)}
+.footer-bottom{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:1.5rem 3.5rem;
+  border-top:1px solid rgba(196,151,63,0.08);
+  font-size:.65rem;
+  color:rgba(249,245,238,.18);
+  letter-spacing:.05em;
+}
+.footer-gems{
+  display:flex;gap:.5rem;align-items:center;
+}
+.footer-gem{
+  width:4px;height:4px;
+  background:rgba(196,151,63,0.3);
+  transform:rotate(45deg);
+}
+</style>
+
+<h2 class="sr-only">Al Garghet – sito ristorante luxury redesign</h2>
+
+<nav class="nav">
+  <div class="nav-brand">
+    Al Garghet
+    <span>Ristorante · Milano · Dal 1991</span>
+  </div>
+  <ul class="nav-menu">
+    <li><a href="https://algarghet.it/about/">Il ristorante</a></li>
+    <li><a href="https://algarghet.it/menu/">Menu</a></li>
+    <li><a href="https://algarghet.it/cucina/">Cucina</a></li>
+    <li><a href="https://algarghet.it/ambienti/">Ambienti</a></li>
+    <li><a href="https://algarghet.it/contatti/">Contatti</a></li>
+  </ul>
+  <a href="https://algarghet.superbexperience.com/" class="nav-cta">Prenota</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-pill">Cucina milanese dal 1991</div>
+    <h1 class="hero-h1">
+      La terra<br>di <em>mezzo</em>
+    </h1>
+    <div class="hero-sep">
+      <div class="hero-sep-line"></div>
+      <div class="hero-sep-gem"></div>
+      <div class="hero-sep-line"></div>
+    </div>
+    <p class="hero-intro">Un luogo dove natura, fiaba e tradizione milanese si fondono in un connubio incantato. Tra il verde di Selvanesco, lontano dal rumore.</p>
+    <div class="hero-actions">
+      <a href="https://algarghet.superbexperience.com/" class="btn-primary">Prenota un tavolo</a>
+      <a href="https://algarghet.it/menu/" class="btn-ghost">Scopri il menu →</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-artwork">
+      <svg class="hero-ornament-art" width="320" height="320" viewBox="0 0 320 320">
+        <circle cx="160" cy="160" r="140" stroke="#C4973F" stroke-width="0.5" fill="none"/>
+        <circle cx="160" cy="160" r="108" stroke="#C4973F" stroke-width="0.5" fill="none"/>
+        <circle cx="160" cy="160" r="76" stroke="#C4973F" stroke-width="0.5" fill="none"/>
+        <circle cx="160" cy="160" r="44" stroke="#C4973F" stroke-width="1" fill="none"/>
+        <line x1="160" y1="20" x2="160" y2="300" stroke="#C4973F" stroke-width="0.4"/>
+        <line x1="20" y1="160" x2="300" y2="160" stroke="#C4973F" stroke-width="0.4"/>
+        <line x1="61" y1="61" x2="259" y2="259" stroke="#C4973F" stroke-width="0.4"/>
+        <line x1="259" y1="61" x2="61" y2="259" stroke="#C4973F" stroke-width="0.4"/>
+        <polygon points="160,30 175,155 160,140 145,155" fill="none" stroke="#C4973F" stroke-width="0.5"/>
+        <polygon points="160,290 175,165 160,180 145,165" fill="none" stroke="#C4973F" stroke-width="0.5"/>
+        <polygon points="30,160 155,175 140,160 155,145" fill="none" stroke="#C4973F" stroke-width="0.5"/>
+        <polygon points="290,160 165,175 180,160 165,145" fill="none" stroke="#C4973F" stroke-width="0.5"/>
+        <rect x="147" y="147" width="26" height="26" fill="rgba(196,151,63,0.4)" transform="rotate(45,160,160)"/>
+      </svg>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">33</div>
+        <div class="stat-label">anni di storia</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">∞</div>
+        <div class="stat-label">ricette di famiglia</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ribbon">
+  <span class="ribbon-item">Cucina Milanese</span>
+  <div class="ribbon-dot"></div>
+  <span class="ribbon-item">Via Selvanesco 36</span>
+  <div class="ribbon-dot"></div>
+  <span class="ribbon-item">Aperto dal Martedì</span>
+  <div class="ribbon-dot"></div>
+  <span class="ribbon-item">Giardino Privato</span>
+  <div class="ribbon-dot"></div>
+  <span class="ribbon-item">Eventi Privati</span>
+  <div class="ribbon-dot"></div>
+  <span class="ribbon-item">Dal 1991</span>
+</div>
+
+<section class="storia">
+  <div class="storia-visual">
+    <div class="storia-visual-inner">
+      <svg width="200" height="260" viewBox="0 0 200 260" style="opacity:.1">
+        <path d="M100 20 C 50 60, 30 100, 40 140 C 50 180, 40 220, 100 250 C 160 220, 150 180, 160 140 C 170 100, 150 60, 100 20Z" stroke="#C4973F" stroke-width="1" fill="none"/>
+        <path d="M100 40 C 65 75, 50 110, 58 143 C 66 176, 55 215, 100 238 C 145 215, 134 176, 142 143 C 150 110, 135 75, 100 40Z" stroke="#C4973F" stroke-width="0.5" fill="none"/>
+        <line x1="100" y1="20" x2="100" y2="250" stroke="#C4973F" stroke-width="0.4"/>
+      </svg>
+    </div>
+    <div class="storia-inner-frame"></div>
+    <div class="storia-yr">1991</div>
+  </div>
+  <div class="storia-content">
+    <p class="eyebrow">La nostra storia</p>
+    <h2 class="storia-h2">Un'anima antica,<br>una cucina viva</h2>
+    <blockquote class="storia-quote">"Mi innamorai subito di questo posto, ne sentii l'anima, perché l'aveva già un'anima, carico com'era di storia — era quello che stavo cercando."</blockquote>
+    <p class="storia-body">Il ristorante Al Garghet è dal 1991 un luogo magico dove assaporare i piatti della tradizione milanese in un'atmosfera unica. Emanuela Cipolla lo volle chiamare "la terra di mezzo": ispirata dalla terra degli gnomi e delle fate di Tolkien, qui natura, fiaba e immaginazione si fondono in un connubio incantato.</p>
+    <div class="firma">
+      <span class="firma-nome">Emanuela Cipolla</span>
+      <span class="firma-ruolo">Proprietaria &amp; Chef</span>
+    </div>
+  </div>
+</section>
+
+<section class="menu">
+  <div class="menu-head">
+    <div>
+      <p class="eyebrow" style="color:var(--gold)">I piatti</p>
+      <h2 class="menu-h2">Sapori della tradizione</h2>
+    </div>
+    <a href="https://algarghet.it/menu/" class="menu-link">Menu completo →</a>
+  </div>
+  <div class="menu-grid">
+    <div class="dish">
+      <div class="dish-bg-num">I</div>
+      <p class="dish-cat">Primo piatto</p>
+      <h3 class="dish-name">Risotto alla milanese</h3>
+      <div class="dish-rule"></div>
+      <p class="dish-desc">Con ossobuco, midollo e zafferano d.o.p. La ricetta originale della nonna, invariata dal 1991.</p>
+    </div>
+    <div class="dish">
+      <div class="dish-bg-num">II</div>
+      <p class="dish-cat">Pasta fresca</p>
+      <h3 class="dish-name">Tagliatelle ai porcini</h3>
+      <div class="dish-rule"></div>
+      <p class="dish-desc">Funghi porcini freschi di stagione, timo selvatico e olio delle Langhe su sfoglia all'uovo.</p>
+    </div>
+    <div class="dish">
+      <div class="dish-bg-num">III</div>
+      <p class="dish-cat">Secondo classico</p>
+      <h3 class="dish-name">Cotoletta alla milanese</h3>
+      <div class="dish-rule"></div>
+      <p class="dish-desc">Alta, al burro, servita con insalata di stagione. Fedele alla ricetta originale, senza compromessi.</p>
+    </div>
+    <div class="dish">
+      <div class="dish-bg-num">IV</div>
+      <p class="dish-cat">Invernale</p>
+      <h3 class="dish-name">Cassoeula</h3>
+      <div class="dish-rule"></div>
+      <p class="dish-desc">Verze e maiale cotto lentamente secondo la tradizione contadina lombarda. Solo in stagione.</p>
+    </div>
+    <div class="dish">
+      <div class="dish-bg-num">V</div>
+      <p class="dish-cat">Antipasto</p>
+      <h3 class="dish-name">Nervetti in insalata</h3>
+      <div class="dish-rule"></div>
+      <p class="dish-desc">Cipolla rossa, capperi di Pantelleria, prezzemolo fresco e aceto di vino rosso invecchiato.</p>
+    </div>
+    <div class="dish">
+      <div class="dish-bg-num">VI</div>
+      <p class="dish-cat">Dolce</p>
+      <h3 class="dish-name">Torta di polenta e mandorle</h3>
+      <div class="dish-rule"></div>
+      <p class="dish-desc">Ricetta di famiglia, tiepida, con crema di mascarpone al vin brûlé e scorza di arancia candita.</p>
+    </div>
+  </div>
+</section>
+
+<section class="giardino">
+  <div class="giardino-visual">
+    <svg class="giardino-svg" viewBox="0 0 300 380" preserveAspectRatio="xMidYMid slice">
+      <circle cx="150" cy="190" r="120" stroke="#C4973F" stroke-width="0.6" fill="none"/>
+      <circle cx="150" cy="190" r="80" stroke="#C4973F" stroke-width="0.4" fill="none"/>
+      <circle cx="150" cy="190" r="40" stroke="#C4973F" stroke-width="0.8" fill="none"/>
+      <line x1="150" y1="70" x2="150" y2="310" stroke="#C4973F" stroke-width="0.4"/>
+      <line x1="30" y1="190" x2="270" y2="190" stroke="#C4973F" stroke-width="0.4"/>
+      <line x1="65" y1="85" x2="235" y2="295" stroke="#C4973F" stroke-width="0.3"/>
+      <line x1="235" y1="85" x2="65" y2="295" stroke="#C4973F" stroke-width="0.3"/>
+    </svg>
+    <div class="giardino-inner-frame"></div>
+    <div class="giardino-badge">Giardino · Estate</div>
+  </div>
+  <div class="giardino-text">
+    <p class="eyebrow">Gli ambienti</p>
+    <h2 class="giardino-h2">Un angolo verde<br>nel cuore della città</h2>
+    <p class="giardino-body">Il Garghet non è solo un ristorante. È un giardino segreto, un cortile incantato, una sala musica con storia. Ogni ambiente racconta qualcosa, e ogni tavolo ha la sua luce.</p>
+    <div class="services">
+      <div class="svc">Giardino privato per cene estive all'aperto</div>
+      <div class="svc">Sala musica con pianoforte originale</div>
+      <div class="svc">Spazio per eventi privati e celebrazioni</div>
+      <div class="svc">Natale e feste aziendali su prenotazione</div>
+      <div class="svc">Delivery e Gift Shop disponibili</div>
+    </div>
+  </div>
+</section>
+
+<section class="orari">
+  <div class="orari-left">
+    <p class="eyebrow">Quando venire</p>
+    <h2 class="orari-h2">Orari<br>di apertura</h2>
+    <div class="orari-table">
+      <div class="orari-row">
+        <span class="orari-day">Lunedì</span>
+        <span class="orari-time orari-closed">Chiuso · aperto a dicembre</span>
+      </div>
+      <div class="orari-row">
+        <span class="orari-day">Martedì – Venerdì</span>
+        <span class="orari-time">Cena · 19:00 – 00:00</span>
+      </div>
+      <div class="orari-row">
+        <span class="orari-day">Sabato</span>
+        <span class="orari-time">Pranzo 12–16 · Cena 19–00</span>
+      </div>
+      <div class="orari-row">
+        <span class="orari-day">Domenica</span>
+        <span class="orari-time">Pranzo 12–16 · Cena 19–00</span>
+      </div>
+    </div>
+    <p class="orari-note">La cucina chiude alle 22:00 (cena) e alle 14:00 (pranzo)</p>
+  </div>
+  <div class="orari-right">
+    <div>
+      <p class="orari-cta-label">Prenota</p>
+      <h3 class="orari-h3">Riserva<br>il tuo tavolo</h3>
+    </div>
+    <p class="orari-desc">Vi aspettiamo nel verde di Selvanesco. Contattateci per cene private, eventi aziendali e serate speciali.</p>
+    <div class="contact-list">
+      <div class="contact-row">
+        <span class="contact-lbl">Tel</span>
+        <span class="contact-val">(+39) 02 534698</span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-lbl">Email</span>
+        <span class="contact-val">info@algarghet.it</span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-lbl">Indirizzo</span>
+        <span class="contact-val">Via Selvanesco 36 · 20141 Milano</span>
+      </div>
+    </div>
+    <a href="https://algarghet.superbexperience.com/" class="orari-btn">
+      Prenota ora
+      <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+    </a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-main">
+    <div>
+      <div class="footer-brand-name">Al Garghet</div>
+      <div class="footer-tagline">Dal 1991 · Via Selvanesco 36 · Milano</div>
+      <div class="footer-address">
+        Via Selvanesco, 36<br>
+        20141 Milano<br>
+        (+39) 02 534698<br>
+        info@algarghet.it
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Il ristorante</h4>
+      <ul>
+        <li><a href="https://algarghet.it/about/">Chi siamo</a></li>
+        <li><a href="https://algarghet.it/ambienti/">Gli ambienti</a></li>
+        <li><a href="https://algarghet.it/natale/">Natale</a></li>
+        <li><a href="https://algarghet.it/press-kit/">Press kit</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Menu &amp; cucina</h4>
+      <ul>
+        <li><a href="https://algarghet.it/menu/">Menu completo</a></li>
+        <li><a href="https://algarghet.it/cucina/">La nostra cucina</a></li>
+        <li><a href="https://algarghet.it/delivery/">Delivery</a></li>
+        <li><a href="https://algarghet.it/gift/">Gift shop</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Seguici</h4>
+      <ul>
+        <li><a href="https://algarghet.it/contatti/">Dove siamo</a></li>
+        <li><a href="https://www.instagram.com/algarghet/">Instagram</a></li>
+        <li><a href="https://www.facebook.com/ristorantealgarghet">Facebook</a></li>
+        <li><a href="https://algarghet.it/privacy-policy/">Privacy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 Al Garghet · P.IVA 10364950153</span>
+    <div class="footer-gems">
+      <div class="footer-gem"></div>
+      <div class="footer-gem"></div>
+      <div class="footer-gem"></div>
+    </div>
+    <span>Tutti i diritti riservati</span>
+  </div>
+</footer>
